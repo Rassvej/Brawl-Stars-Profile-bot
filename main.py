@@ -14,7 +14,7 @@ bot = telebot.TeleBot(telegram_token)
 # Command handler /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Привет! Для просмотра статистики профилей в Brawl Stars используйте внутриигровой #ТЭГ игрока.")
+    bot.reply_to(message, f"Привет! Для просмотра статистики профилей в Brawl Stars используйте внутриигровой #ТЭГ игрока.")
 
 # Text message handler
 @bot.message_handler(func=lambda message: True)
@@ -30,14 +30,14 @@ def handle_message(message):
             response = f"Никнейм: {player.name }\Тэг: #{player.tag}\Трофеи: {player.trophies}\Рекорд трофеев: {player.highest_trophies}\Уровень: {player.exp_level}"
             bot.reply_to(message, response)
         except brawlstats.NotFoundError:
-            bot.reply_to(message, "Такого тэга не существует, перепроверьте.")
+            bot.reply_to(message, f"Такого тэга не существует, перепроверьте.")
 except Exception as e:
             # In case of other errors, we send an error message
             bot.reply_to(message, f"Error: {str(e)}")
             
 else:
 # If the message does not contain a player tag, we send a hint
-        bot.reply_to(message, "Для просмотра статистики игрока. Введите тэг начиная с #.")
+        bot.reply_to(message, f"Для просмотра статистики игрока. Введите тэг начиная с #.")
 
 # Launching the bot
 bot.polling()
