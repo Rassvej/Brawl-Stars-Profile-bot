@@ -35,7 +35,7 @@ def handle_message(message):
         except brawlstats.NotFoundError:
             # In case of an error, we send an error message
             bot.reply_to(message, "Такого тэга не существует, перепроверьте.")
-except Exception as e:
+        except Exception as e:
             # In case of other errors, we send an error message
             bot.reply_to(message, f"ERROR({e})")
 else:
