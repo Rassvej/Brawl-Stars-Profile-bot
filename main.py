@@ -26,17 +26,12 @@ def handle_message(message):
 # Extract the player tag
         player_tag = text[1:]
         try:
-            # We get the player's profile data by his tag
             player = client.get_player(player_tag)
-            # We form a reply message with the player's profile data
             response = f"Никнейм: {player.name }\Тэг: #{player.tag}\Трофеи: {player.trophies}\Рекорд трофеев: {player.highest_trophies}\Уровень: {player.exp_level}"
-# Sending a reply message to the user
             bot.reply_to(message, response)
         except brawlstats.NotFoundError:
-            # In case of an error, we send an error message
             bot.reply_to(message, "Такого тэга не существует, перепроверьте.")
         except Exception as e:
-            # In case of other errors, we send an error message
             bot.reply_to(message, f"ERROR({e})")
 else:
 # If the message does not contain a player tag, we send a hint
