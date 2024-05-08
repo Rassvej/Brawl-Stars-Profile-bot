@@ -34,10 +34,10 @@ def handle_message(message):
             bot.reply_to(message, response)
         except brawlstats.NotFoundError:
             # In case of an error, we send an error message
-            bot.reply_to(message, "Такого тэга не сущевствует, перепроверьте.")
+            bot.reply_to(message, "Такого тэга не существует, перепроверьте.")
 except Exception as e:
             # In case of other errors, we send an error message
-            bot.reply_to(message, f"ОШИБКА: {str(e)}")
+            bot.reply_to(message, f"ERROR")
 else:
 # If the message does not contain a player tag, we send a hint
         bot.reply_to(message, "Для просмотра статистики игрока. Введите тэг начиная с #.")
